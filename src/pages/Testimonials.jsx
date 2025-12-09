@@ -153,7 +153,7 @@ const Testimonials = () => {
                         className="text-center"
                     >
                         <span className="section-badge flex items-center justify-center gap-2">
-                            <FaQuoteLeft className="text-sm" /> Testimonials
+                            Testimonials
                         </span>
                         <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6">
                             What Our <span className="gradient-text">Clients Say</span>

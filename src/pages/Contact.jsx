@@ -144,7 +144,6 @@ const Contact = () => {
                         className="text-center"
                     >
                         <span className="section-badge inline-flex items-center gap-2">
-                            <FaEnvelope className="text-sm" />
                             <span>Contact Us</span>
                         </span>
                         <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6">
@@ -473,7 +472,7 @@ const Contact = () => {
                                 whileTap={{ scale: 0.95 }}
                             >
                                 <FaPhone />
-                                <span>7032 75 75 75</span>
+                                <span>70327 57575</span>
                             </motion.a>
                             <motion.a
                                 href="tel:+919989468555"

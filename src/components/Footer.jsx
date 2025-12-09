@@ -36,7 +36,6 @@ const Footer = () => {
     const socialLinks = [
         { icon: FaFacebookF, url: '#', color: 'hover:bg-blue-600' },
         { icon: FaInstagram, url: '#', color: 'hover:bg-pink-600' },
-        { icon: FaLinkedinIn, url: '#', color: 'hover:bg-blue-700' },
         { icon: FaTwitter, url: '#', color: 'hover:bg-sky-500' },
         { icon: FaYoutube, url: '#', color: 'hover:bg-red-600' },
     ];
@@ -58,9 +57,6 @@ const Footer = () => {
                             />
                         </Link>
 
-                        {/* <p className="text-sm font-semibold text-primary-light mb-2">
-                            THE MODERN ADVERTISERS
-                        </p> */}
 
                         <p className="text-gray-400 mb-6 leading-relaxed">
                             For all types of advertisements. Creating impactful advertising
@@ -126,7 +122,7 @@ const Footer = () => {
                                 <FaPhone className="text-primary mt-1" />
                                 <div>
                                     <a href="tel:+917032757575" className="hover:text-white block">
-                                        7032 75 75 75
+                                        70327 57575
                                     </a>
                                     <a href="tel:+919989468555" className="hover:text-white block">
                                         99894 68555

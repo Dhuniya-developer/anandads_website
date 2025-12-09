@@ -2,6 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 🔥 HORIZONTAL SCROLL FIX - START */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+}
+
+body {
+  overflow-x: hidden !important;
+  max-width: 100vw;
+  width: 100%;
+  position: relative;
+}
+
+#root {
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+}
+
+/* Prevent all containers from overflowing */
+div,
+section,
+header,
+nav,
+main,
+footer {
+  max-width: 100%;
+}
+
+/* Image overflow fix */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Prevent text overflow */
+* {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Extra mobile constraints */
+@media (max-width: 768px) {
+  * {
+    max-width: 100vw;
+  }
+
+  body {
+    position: relative;
+    overflow-x: hidden !important;
+  }
+}
+
+/* 🔥 HORIZONTAL SCROLL FIX - END */
+
 * {
   font-family: 'Inter', sans-serif;
   scroll-behavior: smooth;
@@ -47,11 +110,15 @@
   background-clip: text;
 }
 
-/* Navbar */
+/* Navbar - 🔥 Overflow fix added */
 .navbar {
   transition: all 0.3s ease;
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(20px);
+  overflow: hidden;
+  /* 🔥 Added */
+  max-width: 100vw;
+  /* 🔥 Added */
 }
 
 .navbar.scrolled {
@@ -63,6 +130,8 @@
   color: var(--gray-600);
   font-weight: 500;
   transition: color 0.3s ease;
+  white-space: nowrap;
+  /* 🔥 Added - prevent text wrap */
 }
 
 .nav-link:hover,
@@ -97,6 +166,8 @@
   box-shadow: 0 4px 15px rgba(200, 16, 46, 0.3);
   display: inline-block;
   text-align: center;
+  white-space: nowrap;
+  /* 🔥 Added */
 }
 
 .btn-primary:hover {
@@ -115,6 +186,8 @@
   transition: all 0.3s ease;
   display: inline-block;
   text-align: center;
+  white-space: nowrap;
+  /* 🔥 Added */
 }
 
 .btn-secondary:hover {
@@ -165,6 +238,10 @@
 
 .portfolio-card img {
   transition: transform 0.5s ease;
+  width: 100%;
+  /* 🔥 Added */
+  height: auto;
+  /* 🔥 Added */
 }
 
 .portfolio-card:hover img {
@@ -221,6 +298,8 @@
   font-size: 15px;
   transition: all 0.3s ease;
   background: white;
+  max-width: 100%;
+  /* 🔥 Added */
 }
 
 .form-input:focus {
@@ -249,6 +328,8 @@
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 18px;
+  flex-shrink: 0;
+  /* 🔥 Added */
 }
 
 .carousel-btn:hover {
@@ -263,6 +344,8 @@
   background: var(--gray-300);
   cursor: pointer;
   transition: all 0.3s ease;
+  flex-shrink: 0;
+  /* 🔥 Added */
 }
 
 .carousel-dot.active {
@@ -278,6 +361,8 @@
   transition: all 0.3s ease;
   background: var(--gray-200);
   color: var(--gray-600);
+  white-space: nowrap;
+  /* 🔥 Added */
 }
 
 .filter-btn.active,
@@ -335,6 +420,8 @@
   transform: translateX(100%);
   transition: transform 0.4s ease;
   box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+  max-width: 85vw;
+  /* 🔥 Added */
 }
 
 .mobile-menu.active {
@@ -381,6 +468,16 @@
       rgba(200, 16, 46, 0.1) 100%);
   background-size: 200% 100%;
   animation: shimmer 2s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 /* Glow Effect */

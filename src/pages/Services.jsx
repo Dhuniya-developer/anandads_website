@@ -46,7 +46,7 @@ const Services = () => {
                         className="text-center"
                     >
                         <span className="section-badge flex items-center justify-center gap-2">
-                            <FaCogs className="text-sm" /> Our Services
+                            Our Services
                         </span>
 
                         <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">

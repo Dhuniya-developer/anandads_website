@@ -152,7 +152,7 @@ const Portfolio = () => {
                         className="text-center"
                     >
                         <span className="section-badge flex justify-center items-center gap-2">
-                            <FaBriefcase /> Our Portfolio
+                            Our Portfolio
                         </span>
 
                         <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6">

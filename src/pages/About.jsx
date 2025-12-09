@@ -80,7 +80,7 @@ const About = () => {
                         className="text-center mb-16"
                     >
                         <span className="section-badge flex items-center justify-center gap-2">
-                            <FaBuilding className="text-sm" /> About Us
+                            About Us
                         </span>
                         <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6">
                             The Modern <span className="gradient-text">Advertisers</span>

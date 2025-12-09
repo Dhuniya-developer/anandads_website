@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FaPhone, FaTimes, FaBars } from 'react-icons/fa' // 🔥 React Icons import
+import { FaPhone, FaTimes, FaBars } from 'react-icons/fa'
 import Logo from '../assets/logo1.png'
 
 const Navbar = ({ mobileMenuOpen = false, setMobileMenuOpen = () => { } }) => {
@@ -16,12 +16,10 @@ const Navbar = ({ mobileMenuOpen = false, setMobileMenuOpen = () => { } }) => {
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
-    // 🔥 Route change aithe menu close avuthundi
     useEffect(() => {
         setMobileMenuOpen(false)
     }, [location, setMobileMenuOpen])
 
-    // 🔥 Menu open unte body scroll lock
     useEffect(() => {
         if (mobileMenuOpen) {
             document.body.style.overflow = 'hidden'
@@ -48,28 +46,29 @@ const Navbar = ({ mobileMenuOpen = false, setMobileMenuOpen = () => { } }) => {
                 initial={{ y: -100 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.5 }}
-                className={`fixed w-full z-50 py-3 px-4 md:py-4 md:px-6 lg:px-8 xl:px-12 border-b border-gray-100 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-sm shadow-sm' : 'bg-white'
+                className={`fixed w-full left-0 right-0 z-50 py-2 px-3 sm:py-3 sm:px-4 md:py-4 md:px-6 lg:px-8 xl:px-12 border-b border-gray-100 transition-all duration-300 overflow-hidden ${scrolled ? 'bg-white/95 backdrop-blur-sm shadow-sm' : 'bg-white'
                     }`}
             >
-                <div className="max-w-7xl mx-auto flex justify-between items-center">
+                {/* 🔥 Container with max constraints */}
+                <div className="w-full max-w-7xl mx-auto flex justify-between items-center">
 
-                    {/* 🔥 LOGO */}
-                    <Link to="/" className="flex items-center gap-3 z-50">
+                    {/* 🔥 LOGO - Minimal size */}
+                    <Link to="/" className="flex items-center z-50 flex-shrink-0 min-w-0">
                         <img
                             src={Logo}
                             alt="Anand Ads Logo"
-                            className="w-20 h-12 sm:w-24 md:w-28 lg:w-32 xl:w-36 rounded-lg object-contain"
+                            className="w-12 h-7 sm:w-16 sm:h-10 md:w-20 md:h-12 lg:w-28 xl:w-32 object-contain"
                         />
                     </Link>
 
                     {/* Desktop Menu */}
-                    <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+                    <div className="hidden lg:flex items-center gap-6 xl:gap-8 flex-1 justify-center">
                         {navItems.map((item) => (
                             <NavLink
                                 key={item.path}
                                 to={item.path}
                                 className={({ isActive }) =>
-                                    `relative px-1 py-2 text-sm xl:text-base font-medium transition-colors hover:text-primary ${isActive
+                                    `relative px-1 py-2 text-sm xl:text-base font-medium transition-colors hover:text-primary whitespace-nowrap ${isActive
                                         ? 'text-primary after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary after:rounded-full'
                                         : 'text-gray-700'
                                     }`
@@ -81,39 +80,38 @@ const Navbar = ({ mobileMenuOpen = false, setMobileMenuOpen = () => { } }) => {
                     </div>
 
                     {/* Desktop Contact Section */}
-                    <div className="hidden lg:flex items-center gap-3 xl:gap-4">
+                    <div className="hidden lg:flex items-center gap-3 xl:gap-4 flex-shrink-0">
                         <a
                             href="tel:+917032757575"
-                            className="hidden xl:flex items-center gap-2 text-gray-600 hover:text-primary transition-colors text-sm xl:text-base"
+                            className="hidden xl:flex items-center gap-2 text-gray-600 hover:text-primary transition-colors text-sm xl:text-base whitespace-nowrap"
                         >
-                            <FaPhone className="text-primary" /> {/* 🔥 React Icon */}
+                            <FaPhone className="text-primary" />
                             70327 57575
                         </a>
-                        <Link to="/contact" className="btn-primary px-4 py-2 text-sm xl:text-base font-semibold">
+                        <Link to="/contact" className="btn-primary px-4 py-2 text-sm xl:text-base font-semibold whitespace-nowrap">
                             Get Quote
                         </Link>
                     </div>
 
-                    {/* 🔥 Mobile Menu Button - React Icons */}
+                    {/* 🔥 Mobile Menu Button - Minimal */}
                     <button
-                        className="lg:hidden text-gray-700 hover:text-primary transition-colors p-2 z-50"
+                        className="lg:hidden text-gray-700 hover:text-primary transition-colors p-1.5 z-50 flex-shrink-0 ml-auto"
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                         aria-label="Toggle menu"
                     >
                         {mobileMenuOpen ? (
-                            <FaTimes className="text-2xl" /> // 🔥 Close icon
+                            <FaTimes className="text-xl" />
                         ) : (
-                            <FaBars className="text-2xl" /> // 🔥 Menu icon
+                            <FaBars className="text-xl" />
                         )}
                     </button>
                 </div>
             </motion.nav>
 
-            {/* 🔥 MOBILE MENU DRAWER */}
+            {/* MOBILE MENU DRAWER */}
             <AnimatePresence>
                 {mobileMenuOpen && (
                     <>
-                        {/* Dark Backdrop */}
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -123,7 +121,6 @@ const Navbar = ({ mobileMenuOpen = false, setMobileMenuOpen = () => { } }) => {
                             onClick={() => setMobileMenuOpen(false)}
                         />
 
-                        {/* Slide-in Menu Panel */}
                         <motion.div
                             initial={{ x: '100%' }}
                             animate={{ x: 0 }}
@@ -131,23 +128,21 @@ const Navbar = ({ mobileMenuOpen = false, setMobileMenuOpen = () => { } }) => {
                             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
                             className="fixed top-0 right-0 h-full w-[85%] max-w-[300px] bg-white z-50 shadow-2xl lg:hidden flex flex-col"
                         >
-                            {/* Menu Header with Logo & Close */}
                             <div className="flex justify-between items-center p-4 border-b border-gray-200 bg-white">
                                 <img
                                     src={Logo}
                                     alt="Anand Ads Logo"
-                                    className="w-20 h-auto object-contain"
+                                    className="w-16 h-10 object-contain"
                                 />
                                 <button
                                     onClick={() => setMobileMenuOpen(false)}
                                     className="text-gray-700 hover:text-primary transition-colors p-2"
                                     aria-label="Close menu"
                                 >
-                                    <FaTimes className="text-2xl" /> {/* 🔥 React Icon */}
+                                    <FaTimes className="text-2xl" />
                                 </button>
                             </div>
 
-                            {/* Scrollable Nav Links */}
                             <div className="flex-1 overflow-y-auto py-2">
                                 {navItems.map((item, index) => (
                                     <motion.div
@@ -171,7 +166,6 @@ const Navbar = ({ mobileMenuOpen = false, setMobileMenuOpen = () => { } }) => {
                                     </motion.div>
                                 ))}
 
-                                {/* Phone Number - Mobile */}
                                 <motion.div
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
@@ -182,12 +176,11 @@ const Navbar = ({ mobileMenuOpen = false, setMobileMenuOpen = () => { } }) => {
                                         href="tel:+917032757575"
                                         className="flex items-center justify-center gap-3 py-3 px-4 bg-gray-50 rounded-lg text-gray-700 hover:text-primary hover:bg-gray-100 transition-colors"
                                     >
-                                        <FaPhone className="text-primary text-lg" /> {/* 🔥 React Icon */}
-                                        <span className="font-semibold text-base">7032 75 75 75</span>
+                                        <FaPhone className="text-primary text-lg" />
+                                        <span className="font-semibold text-base">70327 57575</span>
                                     </a>
                                 </motion.div>
 
-                                {/* Get Quote Button */}
                                 <motion.div
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
